@@ -3,12 +3,21 @@
   "version": "0.1.0",
   "private": true,
   "scripts": {
-    "dev": "next dev",
-    "build": "next build",
-    "start": "next start",
+    "dev": "env-cmd -e base,dev next dev",
+    "local": "env-cmd -e base,local next dev",
+    "qa": "env-cmd -e base,qa next dev",
+    "build": "env-cmd --no-override -e base,prod next build",
+    "build:local": "env-cmd -e base,local next build",
+    "build:dev": "env-cmd -e base,dev next build",
+    "build:qa": "env-cmd -e base,qa next build",
+    "start": "env-cmd --no-override -e base,prod next start",
+    "start:local": "env-cmd -e base,local next dev",
+    "start:dev": "env-cmd -e base,dev next dev",
+    "start:qa": "env-cmd -e base,qa next dev",
     "lint": "next lint"
   },
   "dependencies": {
+    "env-cmd": "^10.1.0",
     "next": "11.0.1",
     "react": "17.0.2",
     "react-dom": "17.0.2"
